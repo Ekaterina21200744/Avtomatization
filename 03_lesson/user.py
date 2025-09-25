@@ -12,4 +12,3 @@ class User:
 
     def print_fnln(self):
         print(f'{self.first_name} {self.last_name}')
-

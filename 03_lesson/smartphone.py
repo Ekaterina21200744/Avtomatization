@@ -5,7 +5,6 @@ class Smartphone:
         self.model = model
         self.number_phone = number_phone
 
-        
 
 
     
