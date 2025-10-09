@@ -14,6 +14,7 @@ sleep (5)
 blue_button = driver.find_element(By.XPATH, "//button[contains(concat(' ', @class, ' '), ' btn-primary ')]")
 blue_button.click()
 
+
 sleep (5)
 
 driver.quit()
