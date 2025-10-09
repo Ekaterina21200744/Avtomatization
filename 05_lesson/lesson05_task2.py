@@ -9,11 +9,11 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 
 driver.get("http://uitestingplayground.com/dynamicid")
 
-sleep (2)
+sleep (5)
 
-blue_button = driver.find_element(By.XPATH, "//button[contains(@class), '.btn.btn-primary')]")
+blue_button = driver.find_element(By.XPATH, "//button[contains(concat(' ', @class, ' '), ' btn-primary ')]")
 blue_button.click()
 
-sleep (2)
+sleep (5)
 
 driver.quit()
