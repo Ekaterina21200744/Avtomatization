@@ -16,3 +16,4 @@ src = pictr.get_attribute("src")
 print(src)
 
 driver.quit()
+
