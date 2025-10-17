@@ -13,16 +13,12 @@ waiter = WebDriverWait(driver, 20)
 
 driver.get("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html")
 
+done = waiter.until(EC.text_to_be_present_in_element((By.ID, "text"), "Done!"))
 
-# images = waiter.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "img")))
 
-sleep (10)
-pictures = driver.find_elements(By.CSS_SELECTOR, "img")
+picture = driver.find_element(By.CSS_SELECTOR, "#award")
 
-# l = len(pictures)
-# print(l)
-
-src = pictures[2].get_attribute("src")
+src = picture.get_attribute("src")
 
 print(src)
 
