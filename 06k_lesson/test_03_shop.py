@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def test_form(username="standard_user", password_text="secret_sauce", expected_total="Total: $58.29"):
+def test_shop(username="standard_user", password_text="secret_sauce", expected_total="Total: $58.29"):
   
     driver = webdriver.Firefox(service=FirefoxService())
     
@@ -13,13 +13,13 @@ def test_form(username="standard_user", password_text="secret_sauce", expected_t
         driver.get("https://www.saucedemo.com/")
         wait = WebDriverWait(driver, 20)
         
-        login(driver, wait, username, password_text)
+        test_login(driver, wait, username, password_text)
         
-        add_products_to_cart(driver, wait)
+        test_add_products_to_cart(driver, wait)
         
-        checkout_process(driver, wait)
+        test_checkout_process(driver, wait)
         
-        total_amount = get_total_amount(driver, wait)
+        total_amount = test_get_total_amount(driver, wait)
         
 
         assert total_amount == expected_total, f"Ожидалось '{expected_total}', получено '{total_amount}'"
@@ -36,7 +36,7 @@ def test_form(username="standard_user", password_text="secret_sauce", expected_t
         driver.quit()
         print("Браузер закрыт.")
 
-def login(driver, wait, username, password_text):
+def test_login(driver, wait, username, password_text):
     
     user_name = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#user-name")))
     user_name.send_keys(username)
@@ -48,7 +48,7 @@ def login(driver, wait, username, password_text):
     login_button.click()
     
 
-def add_products_to_cart(driver, wait):
+def test_add_products_to_cart(driver, wait):
     
     products = [
         ("#add-to-cart-sauce-labs-backpack", "Sauce Labs Backpack"),
@@ -60,7 +60,7 @@ def add_products_to_cart(driver, wait):
         product = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, selector)))
         product.click()
 
-def checkout_process(driver, wait):
+def test_checkout_process(driver, wait):
     
     cart = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".shopping_cart_badge")))
     cart.click()
@@ -80,7 +80,7 @@ def checkout_process(driver, wait):
     but_continue = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#continue")))
     but_continue.click()
 
-def get_total_amount(driver, wait):
+def test_get_total_amount(driver, wait):
     
     total = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".summary_total_label")))
     result = total.text 
@@ -89,4 +89,4 @@ def get_total_amount(driver, wait):
     return result
 
 if __name__ == "__main__":
-    test_form()
+    test_shop()
