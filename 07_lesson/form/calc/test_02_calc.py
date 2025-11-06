@@ -15,9 +15,9 @@ wait = WebDriverWait(driver, 20)
 def test_calc():
 
     main_page = MainPageCalc(driver)
-    main_page.set_delay
-    main_page.clicK_button
-    main_page.get_result
-    main_page.check_result
-    main_page.close_browser
+    main_page.set_delay()
+    main_page.clicK_button()
+    main_page.get_result()
+    main_page.check_result()
+    main_page.close_browser()
 
