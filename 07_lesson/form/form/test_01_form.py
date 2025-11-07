@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service as EdgeService
-from MainPage import MainPage
+from MainPageForm import MainPageForm
 
 
 @pytest.fixture
@@ -16,7 +16,7 @@ def driver():
 
 
 def test_form_submission_flow(driver):
-    main_page = MainPage(driver)
+    main_page = MainPageForm(driver)
     main_page.open()
     main_page.fill_form()
     main_page.submit_form()
