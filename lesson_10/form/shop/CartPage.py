@@ -5,16 +5,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
-@allure.title("Страница корзины")
 @allure.feature("Корзина")
-@allure.severity(allure.severity_level.BLOCKER)
 class CartPage:
 
     """Класс для автоматизации тестирования страницы корзины."""
 
-    @allure.title("Инициализация страницы корзины")
-    @allure.description("Инициализирует страницу корзины и ожидает загрузки основных элементов")
     @allure.step("Инициализация страницы корзины")
     def __init__(self, driver):
         with allure.step("Инициализация WebDriver"):
@@ -24,9 +19,6 @@ class CartPage:
         with allure.step("Установка ожидания"):
             self.wait = WebDriverWait(self._driver, 20)
 
-    @allure.title("Нажатие кнопки 'Checkout'")
-    @allure.description("Нажимает кнопку 'Checkout' для оформления заказа.")
-    @allure.feature("Корзина")
     @allure.step("Нажать кнопку 'Checkout'")
     def click_checkout(self):
         """Нажимает кнопку 'Checkout' для оформления заказа."""

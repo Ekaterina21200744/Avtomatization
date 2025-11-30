@@ -17,10 +17,6 @@ class AuthorizationPage:
         with allure.step("Установка ожидания"):
             self.wait = WebDriverWait(self._driver, 20)
 
-    @allure.title("Открытие страницы авторизации")
-    @allure.description("Открывает страницу авторизации и ожидает загрузки основных элементов")
-    @allure.severity(allure.severity_level.BLOCKER)
-    @allure.feature("Авторизация")
     @allure.step("Открыть страницу авторизации")
     def open(self):
         """Открывает страницу авторизации и ожидает загрузки основных элементов."""
@@ -34,10 +30,6 @@ class AuthorizationPage:
                     (By.CSS_SELECTOR, "#user-name")))
             return self
 
-    @allure.title("Авторизация пользователя")
-    @allure.description("Выполняет процесс авторизации пользователя.")
-    @allure.severity(allure.severity_level.BLOCKER)
-    @allure.feature("Авторизация")
     @allure.step("Авторизовать пользователя с логином '{username}'")
     def login(self, username: str, password_text: str):
         """Выполняет процесс авторизации пользователя.

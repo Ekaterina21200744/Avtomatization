@@ -14,6 +14,8 @@ wait = WebDriverWait(driver, 20)
 
 
 @allure.title("Тестирование калькулятора с задержкой")
+@allure.description("Тестирование калькулятора с настройкой задержки выполнения операций")
+@allure.severity(allure.severity_level.BLOCKER)
 @allure.feature("Калькулятор")
 def test_calc():
     """Тестирование калькулятора с задержкой"""

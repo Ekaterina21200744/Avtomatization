@@ -4,16 +4,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-@allure.title("Главная страница калькулятора")
-@allure.description("Класс для автоматизации тестирования главной страницы калькулятора с задержкой.")
-@allure.severity(allure.severity_level.BLOCKER)
+
 @allure.feature("Калькулятор")
 class MainPageCalc:
 
     """Класс для автоматизации тестирования главной страницы калькулятора с задержкой."""
 
-    @allure.title("Инициализация главной страницы калькулятора")
-    @allure.description("Инициализирует драйвер и открывает страницу калькулятора.")
     @allure.step("Инициализация главной страницы калькулятора")
     def __init__(self, driver):
 
@@ -27,9 +23,6 @@ class MainPageCalc:
         with allure.step("Установка ожидания"):
             self.wait = WebDriverWait(self._driver, 20)
 
-    @allure.title("Установка задержки")
-    @allure.description(
-        "Выставляет задержку 45 с, чтобы получить результат основных арифметических операций.")
     @allure.step("Установка задержки")
     def set_delay(self, delay_value: str = "45"):
         """Выставляет задержку 45 с, чтобы получить результат основных арифметических операций."""
@@ -45,8 +38,6 @@ class MainPageCalc:
             with allure.step(f"Ввод задержки вычислений"):
                 delay_input.send_keys(str(delay_value))
 
-    @allure.title("Нажатие на кнопки калькулятора")
-    @allure.description("Нажимает на кнопки калькулятора для выполнения операции 7 + 8 =")
     @allure.step("Нажатие на кнопки калькулятора")
     def clicK_button(self):
         """ Нажатие на установленные кнопки"""
@@ -59,8 +50,6 @@ class MainPageCalc:
                         By.XPATH, f"//span[text()='{button_text}']")
                     button.click()
 
-    @allure.title("Получение результата")
-    @allure.description("Получение результата после выполнения операции с задержкой.")
     @allure.step("Получение результата")
     def get_result(self):
         """Получение результата"""
@@ -78,8 +67,6 @@ class MainPageCalc:
         with allure.step("Возврат текста результата из элемента .screen"):
             return actual_result
 
-    @allure.title("Проверка результата")
-    @allure.description("Проверка полученного результата после выполнения операции с задержкой.")
     @allure.step("Пооверка полученного результата")
     def check_result(self, expected_result: str = "15"):
         """Поверка полученного результата"""
@@ -90,8 +77,6 @@ class MainPageCalc:
         with allure.step("Сравнение ожидаемого и получееного результа"):
             assert actual_result == expected_result, f"Ожидалось '{expected_result}', получено '{actual_result}'"
 
-    @allure.title("Закрытие браузера")
-    @allure.description("Закрытие браузера после завершения тестирования.")
     @allure.step("Завершение работы браузера")
     def close_browser(self):
         """Закрытие браузера"""

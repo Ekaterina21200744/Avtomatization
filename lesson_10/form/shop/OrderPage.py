@@ -9,17 +9,11 @@ from AuthorizationPage import AuthorizationPage
 from MainPageShop import MainPageShop
 from CartPage import CartPage
 
-
-@allure.title("Страница оформления заказа")
 @allure.feature("Оформление заказа")
 class OrderPage:
 
     """Класс для автоматизации тестирования страницы оформления заказа."""
 
-    @allure.title("Инициализация страницы оформления заказа")
-    @allure.description(
-        "Инициализирует страницу оформления заказа и ожидает загрузки основных элементов")
-    @allure.severity(allure.severity_level.BLOCKER)
     @allure.step("Инициализация страницы оформления заказа")
     def __init__(self, driver):
         """Инициализирует страницу оформления заказа и ожидает загрузки основных элементов."""
@@ -31,9 +25,6 @@ class OrderPage:
         with allure.step("Установка ожидания"):
             self.wait = WebDriverWait(self._driver, 20)
 
-    @allure.title("Заполнение полей для оформления заказа")
-    @allure.description("Заполняет поля для оформления заказа")
-    @allure.severity(allure.severity_level.BLOCKER)
     @allure.step("Заполнение полей для оформления заказа")
     def fill_fields(self):
         """Заполняет поля 'First Name', 'Last Name', 'Zip/Postal Code' для оформления заказа."""
@@ -56,9 +47,6 @@ class OrderPage:
                     (By.CSS_SELECTOR, "#postal-code")))
             zip_postal_code.send_keys("1234567")
 
-    @allure.title("Переход к обзору заказа")
-    @allure.description("Нажимает кнопку 'Continue' для перехода к обзору заказа")
-    @allure.severity(allure.severity_level.BLOCKER)
     @allure.step("Нажать кнопку 'Continue' для перехода к обзору заказа")
     def continue_to_overview(self):
         """Нажимает кнопку 'Continue' для перехода к обзору заказа."""
@@ -69,9 +57,7 @@ class OrderPage:
         with allure.step("Клик по кнопке 'Continue'"):
             but_continue.click()
 
-    @allure.title("Получение итоговой суммы заказа")
-    @allure.description("Получает и возвращает итоговую сумму заказа на странице обзора заказа")
-    @allure.severity(allure.severity_level.BLOCKER)
+
     @allure.step("Получить итоговую сумму заказа")
     def get_total_amount(self) -> str:
         """Получает и возвращает итоговую сумму заказа на странице обзора заказа."""

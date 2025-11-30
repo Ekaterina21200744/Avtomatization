@@ -4,7 +4,9 @@ from selenium import webdriver
 from selenium.webdriver.edge.service import Service as EdgeService
 from MainPageF import MainPageF
 
-
+@allure.title("Инициализация браузера Edge для тестирования")
+@allure.description("Фикстура создает и настраивает экземпляр WebDriver для браузера Microsoft Edge.")
+@allure.severity(allure.severity_level.BLOCKER)
 @pytest.fixture
 def browser():
     """Фикстура для инициализации и завершения работы драйвера Edge"""
@@ -18,6 +20,7 @@ def browser():
 
 
 @allure.title("Тестирование формы")
+@allure.description("Тестирование веб-формы: открытие страницы, заполнение полей данными, отправка формы и проверка успешности")
 @allure.severity(allure.severity_level.BLOCKER)
 def test_form_submission_flow(browser):
     """Тестирование формы"""

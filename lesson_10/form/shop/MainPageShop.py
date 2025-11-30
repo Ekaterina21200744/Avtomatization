@@ -5,17 +5,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
-@allure.title("Главная страница магазина")
 @allure.feature("Магазин")
 class MainPageShop:
 
     """Класс для автоматизации тестирования главной страницы магазина."""
 
-    @allure.title("Инициализация главной страницы магазина")
-    @allure.description(
-        "Инициализирует главную страницу магазина и ожидает загрузки основных элементов")
-    @allure.severity(allure.severity_level.BLOCKER)
     @allure.step("Инициализация главной страницы магазина")
     def __init__(self, driver):
         """Инициализирует главную страницу магазина и ожидает загрузки основных элементов."""
@@ -26,9 +20,6 @@ class MainPageShop:
         with allure.step("Установка ожидания"):
             self.wait = WebDriverWait(self._driver, 20)
 
-    @allure.title("Добавление продуктов в корзину")
-    @allure.description("Добавляет три продукта в корзину")
-    @allure.severity(allure.severity_level.BLOCKER)
     @allure.step("Добавить продукты в корзину")
     def add_products_to_cart(self):
         """Добавляет три продукта в корзину."""
@@ -48,9 +39,6 @@ class MainPageShop:
         with allure.step("Возврат к главной странице магазина"):
             return MainPageShop(self._driver)
 
-    @allure.title("Переход в корзину")
-    @allure.description("Переходит в корзину после добавления продуктов")
-    @allure.severity(allure.severity_level.BLOCKER)
     @allure.step("Переход в корзину")
     def get_cart(self):
         """Переходит в корзину после добавления продуктов."""

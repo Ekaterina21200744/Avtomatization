@@ -13,6 +13,8 @@ from OrderPage import OrderPage
 
 
 @allure.title("Тестирование процесса оформления заказа в магазине")
+@allure.severity(allure.severity_level.BLOCKER)
+@allure.description("Тестирование процесса оформления заказа в магазине")
 @allure.feature("Магазин")
 def test_shop(expected_total: str = "Total: $58.29"):
 
